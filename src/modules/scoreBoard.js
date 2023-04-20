@@ -1,6 +1,6 @@
 import { getFirebase } from "./htmlRequests.js";
 import { patchFirebase } from "./htmlRequests.js";
-import _, { forEach } from "underscore";
+//import _, { forEach } from "./underscore-min.js";
 
 const scoreBoardDiv = document.createElement("div");
 document.body.append(scoreBoardDiv);
@@ -12,7 +12,7 @@ uppdateScoreboard(0, "")
 export function uppdateScoreboard(playerScore, playeName){
 
 
-    let allUsers = getFirebase("https://rockpaperscissors-417c0-default-rtdb.europe-west1.firebasedatabase.app/.json");
+    const allUsers = getFirebase("https://rockpaperscissors-417c0-default-rtdb.europe-west1.firebasedatabase.app/.json");
 
     allUsers.then(data => checkForNewHighscore(playerScore,playeName,data.users));
     allUsers.then(data => sortMe(data.users));
@@ -44,7 +44,7 @@ function printScores(usersArray){
 }
 function preparePatch(newName, index, newScore){
 
-    url = ('https://rockpaperscissors-417c0-default-rtdb.europe-west1.firebasedatabase.app/users/'+index+'.json');
+    const url = ('https://rockpaperscissors-417c0-default-rtdb.europe-west1.firebasedatabase.app/users/'+index+'.json');
 
     const newValue = {
         name: newName,
@@ -53,7 +53,7 @@ function preparePatch(newName, index, newScore){
     patchFirebase(url, newValue)
 }
 export function resetFirebaseScores(){
-    url = ('https://rockpaperscissors-417c0-default-rtdb.europe-west1.firebasedatabase.app/.json');
+    const url = ('https://rockpaperscissors-417c0-default-rtdb.europe-west1.firebasedatabase.app/.json');
 
     const newValue = {
         users: [

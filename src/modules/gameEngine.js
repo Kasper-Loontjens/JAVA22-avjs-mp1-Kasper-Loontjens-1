@@ -1,4 +1,4 @@
-import anime from "animejs";
+//import {anime} from "./anime.min.js";
 
 
 const choiceArray = ["Rock", "Paper", "Scissors"];
